@@ -3,6 +3,7 @@ import update from 'immutability-helper'
 import Idea from './idea'
 import IdeaForm from './idea-form'
 import './button.css'
+import Cookies from 'universal-cookie';
 
 class IdeasContainer extends Component {
   constructor(props) {
@@ -14,7 +15,14 @@ class IdeasContainer extends Component {
     }
   }
   componentDidMount () {
-    fetch('http://localhost:3001/api/v1/ideas')
+    const cookies = new Cookies();
+    let token = "Bearer " + cookies.get("jwt")
+    const url = `${process.env.REACT_APP_API_HOST}ideas`
+    console.log(url)
+    fetch(url,
+    {
+      headers: {'Authorization': token}
+    })
     .then(response => response.json())
     .then(data => {
       console.log(data);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import IdeasContainer from './components/ideas-container'
+import LoginForm from './components/login-form'
 import './App.css';
 
 class App extends Component {
@@ -9,6 +10,7 @@ class App extends Component {
         <header className="App-header">
           <h1>Idea Board</h1>
         </header>
+        <LoginForm />
         <IdeasContainer />
       </div>
     );
